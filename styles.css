@@ -27,8 +27,17 @@ body{
     border: rgb(100, 100, 100) 2px solid;
     border-radius: 2%;
     background-color: aliceblue;
-    padding: 20px;
+    padding: 0;
     margin-bottom: 5px;
+}
+
+#displayNumbers{
+    color:black;
+    text-align: right;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    font-weight: 550;
+    padding: 5px;
 }
 
 #topButtons{
@@ -61,10 +70,17 @@ body{
     margin: 1px;
 }
 
+.operatorButtons{
+    background-color: rgb(250, 209, 149);
+}
 
+#equal{
+    background-color: rgb(202, 245, 205);
+}
 
-
-
+#decimal{
+    background-color: rgb(245, 224, 252);
+}
 
 
 #footer{

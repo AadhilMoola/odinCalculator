@@ -37,6 +37,7 @@ const header_h1 = document.querySelector('#header')
 const calculatorContainer_div = document.querySelector('#calculatorContainer')
 
 const display_div = document.querySelector('#display')
+let displayNumbers_div = document.querySelector('#displayNumbers')
 
 const topButtons_div = document.querySelector('#topButtons')
 const clear_button = document.querySelector('#clearButton')
@@ -55,7 +56,7 @@ const nine_button = document.querySelector('#nine')
 const zero_button = document.querySelector('#zero')
 const number_buttons_nodes = document.querySelectorAll('.numberButtons')
 //Number Buttons Array in numerical Order
-const number_buttons = [...numbers_buttons_nodes].map(a=>a.textContent).sort((a,b)=>a-b)
+const number_buttons = [...number_buttons_nodes].map(a=>a.textContent).sort((a,b)=>a-b)
 
 const plus_button = document.querySelector('#plus')
 const minus_button = document.querySelector('#minus')
@@ -68,3 +69,19 @@ const decimal_button = document.querySelector('#decimal')
 const equal_button = document.querySelector('#equal')
 
 const footer_div = document.querySelector('#footer')
+
+let number1 = 0
+//Event Listeners to The Buttons
+for(let i=0; i<number_buttons.length; i++){
+    number_buttons_nodes[i].addEventListener('click', function(){ 
+        if(displayNumbers_div.textContent == 0){
+        displayNumbers_div.textContent = number_buttons_nodes[i].textContent
+        }else if(displayNumbers_div.textContent.length==12){
+            alert('Calculator can\'t fit more')
+        }else{
+            displayNumbers_div.textContent += number_buttons_nodes[i].textContent
+            number1 = displayNumbers_div.textContent
+        }
+    })
+}
+console.log(number1)
