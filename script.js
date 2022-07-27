@@ -53,10 +53,17 @@ const seven_button = document.querySelector('#seven')
 const eight_button = document.querySelector('#eight')
 const nine_button = document.querySelector('#nine')
 const zero_button = document.querySelector('#zero')
+const number_buttons_nodes = document.querySelectorAll('.numberButtons')
+//Number Buttons Array in numerical Order
+const number_buttons = [...numbers_buttons_nodes].map(a=>a.textContent).sort((a,b)=>a-b)
+
 const plus_button = document.querySelector('#plus')
 const minus_button = document.querySelector('#minus')
 const multiply_button = document.querySelector('#multiply')
 const divide_button = document.querySelector('#divide')
+const operators_nodelist = document.querySelectorAll('.operatorButtons')
+const operator_buttons = [...operators_nodelist].map(a=>a.textContent)
+
 const decimal_button = document.querySelector('#decimal')
 const equal_button = document.querySelector('#equal')
 
