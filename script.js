@@ -21,10 +21,10 @@ switch(operator){
         case '-':
             return subtract(a,b)
             break;
-            case '*':
+            case 'x':
                 return multiply(a,b)
                 break
-                case'/':
+                case'÷':
                 return divide(a,b)
                 break
 }
@@ -70,8 +70,14 @@ const equal_button = document.querySelector('#equal')
 
 const footer_div = document.querySelector('#footer')
 
-let number1 = 0
+
+//Variables Needed
+let number1
+let number2
+let operator 
+
 //Event Listeners to The Buttons
+
 for(let i=0; i<number_buttons.length; i++){
     number_buttons_nodes[i].addEventListener('click', function(){ 
         if(displayNumbers_div.textContent == 0){
@@ -80,8 +86,55 @@ for(let i=0; i<number_buttons.length; i++){
             alert('Calculator can\'t fit more')
         }else{
             displayNumbers_div.textContent += number_buttons_nodes[i].textContent
-            number1 = displayNumbers_div.textContent
         }
     })
 }
-console.log(number1)
+
+
+//Clear Button
+clear_button.addEventListener('click', function(){
+    displayNumbers_div.textContent=0
+    number1=0
+    number2=0
+
+})
+
+// Delete Button
+
+delete_button.addEventListener('click', function(){if(displayNumbers_div.textContent.length>1){
+    displayNumbers_div.textContent = displayNumbers_div.textContent.slice(0,-1)
+        }else{
+            displayNumbers_div.textContent = 0
+            }     
+            })
+
+                                            
+
+
+//Operator Buttons
+
+
+
+ for(let i = 0; i<operators_nodelist.length; i++){
+    operators_nodelist[i].addEventListener('click', function(){
+        operator = operators_nodelist[i].textContent;
+        number1 = displayNumbers_div.textContent;
+
+
+    })
+
+
+}
+
+
+
+
+//equalButton
+
+equal_button.addEventListener('click', function(){
+    console.log(number1)
+    number2 = displayNumbers_div.textContent 
+    console.log(number2)
+    console.log(operator)
+    displayNumbers_div.textContent = operate(operator,Number(number1),Number(number2))
+})
