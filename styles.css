@@ -74,6 +74,11 @@ body{
     background-color: rgb(250, 209, 149);
 }
 
+.selected{
+    background-color: rgb(245, 226, 198);
+    border: black solid 2px;
+}
+
 #equal{
     background-color: rgb(202, 245, 205);
 }

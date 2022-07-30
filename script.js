@@ -74,18 +74,22 @@ const footer_div = document.querySelector('#footer')
 //Variables Needed
 let number1
 let number2
-let operator 
+let operator
+let operatorSelected
 
 //Event Listeners to The Buttons
 
 for(let i=0; i<number_buttons.length; i++){
     number_buttons_nodes[i].addEventListener('click', function(){ 
-        if(displayNumbers_div.textContent == 0){
+        if(displayNumbers_div.textContent == 0||operatorSelected==1){
         displayNumbers_div.textContent = number_buttons_nodes[i].textContent
+        removeOperatorClass()
+        operatorSelected=0
         }else if(displayNumbers_div.textContent.length==12){
             alert('Calculator can\'t fit more')
         }else{
             displayNumbers_div.textContent += number_buttons_nodes[i].textContent
+            removeOperatorClass()
         }
     })
 }
@@ -96,6 +100,7 @@ clear_button.addEventListener('click', function(){
     displayNumbers_div.textContent=0
     number1=0
     number2=0
+    removeOperatorClass()
 
 })
 
@@ -118,7 +123,11 @@ delete_button.addEventListener('click', function(){if(displayNumbers_div.textCon
  for(let i = 0; i<operators_nodelist.length; i++){
     operators_nodelist[i].addEventListener('click', function(){
         operator = operators_nodelist[i].textContent;
+        operators_nodelist[i].classList.toggle('selected')
+        operatorSelected = 1
         number1 = displayNumbers_div.textContent;
+    
+
 
 
     })
@@ -126,7 +135,12 @@ delete_button.addEventListener('click', function(){if(displayNumbers_div.textCon
 
 }
 
-
+// Function to Remove the selected class on operator
+function removeOperatorClass(){
+    for(let i = 0; i<operators_nodelist.length; i++){
+    operators_nodelist[i].classList.remove('selected')
+}
+}
 
 
 //equalButton
