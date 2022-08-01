@@ -74,7 +74,7 @@ const footer_div = document.querySelector('#footer')
 //Variables Needed
 let number1
 let number2
-let operator
+let operator = 0
 let operatorSelected
 
 //Event Listeners to The Buttons
@@ -108,8 +108,10 @@ clear_button.addEventListener('click', function(){
 
 delete_button.addEventListener('click', function(){
     if(displayNumbers_div.textContent.length>1){
+        removeOperatorClass()
     displayNumbers_div.textContent = displayNumbers_div.textContent.slice(0,-1)    
         }else{
+            removeOperatorClass()
             displayNumbers_div.textContent = 0
             
             }     
@@ -146,12 +148,13 @@ function removeOperatorClass(){
 
 
 //equalButton
-
+console.log(operator)
 equal_button.addEventListener('click', function(){
-    console.log(number1)
     number2 = displayNumbers_div.textContent 
-    console.log(number2)
-    console.log(operator)
+    if(operator==0){
+        displayNumbers_div.textContent = displayNumbers_div.textContent
+    }else{
     displayNumbers_div.textContent = operate(operator,Number(number1),Number(number2))
     operatorSelected=1
+    }
 })
