@@ -162,13 +162,23 @@ delete_button.addEventListener('click', function(){
 // Decimal Button
 decimal_button.addEventListener('click', function(){
 
-    if(decimalSelected==0){
+    let decimalSelected = displayNumbers_div.textContent.includes('.',0)
+
+    if(decimalSelected==false){
         displayNumbers_div.textContent += '.'
         decimalSelected = 1
     }
     else{
         displayNumbers_div.textContent = displayNumbers_div.textContent
     }
+
+    /* if(decimalSelected==0){
+        displayNumbers_div.textContent += '.'
+        decimalSelected = 1
+    }
+    else{
+        displayNumbers_div.textContent = displayNumbers_div.textContent
+    } */
 })
 
 
