@@ -106,10 +106,12 @@ clear_button.addEventListener('click', function(){
 
 // Delete Button
 
-delete_button.addEventListener('click', function(){if(displayNumbers_div.textContent.length>1){
-    displayNumbers_div.textContent = displayNumbers_div.textContent.slice(0,-1)
+delete_button.addEventListener('click', function(){
+    if(displayNumbers_div.textContent.length>1){
+    displayNumbers_div.textContent = displayNumbers_div.textContent.slice(0,-1)    
         }else{
             displayNumbers_div.textContent = 0
+            
             }     
             })
 
@@ -122,11 +124,11 @@ delete_button.addEventListener('click', function(){if(displayNumbers_div.textCon
 
  for(let i = 0; i<operators_nodelist.length; i++){
     operators_nodelist[i].addEventListener('click', function(){
+        removeOperatorClass()
         operator = operators_nodelist[i].textContent;
         operators_nodelist[i].classList.toggle('selected')
         operatorSelected = 1
         number1 = displayNumbers_div.textContent;
-    
 
 
 
@@ -151,4 +153,5 @@ equal_button.addEventListener('click', function(){
     console.log(number2)
     console.log(operator)
     displayNumbers_div.textContent = operate(operator,Number(number1),Number(number2))
+    operatorSelected=1
 })
