@@ -172,13 +172,6 @@ decimal_button.addEventListener('click', function(){
         displayNumbers_div.textContent = displayNumbers_div.textContent
     }
 
-    /* if(decimalSelected==0){
-        displayNumbers_div.textContent += '.'
-        decimalSelected = 1
-    }
-    else{
-        displayNumbers_div.textContent = displayNumbers_div.textContent
-    } */
 })
 
 
@@ -189,8 +182,16 @@ function equate(){
     if(operator==0){
         displayNumbers_div.textContent = displayNumbers_div.textContent
     }else{
-    displayNumbers_div.textContent = operate(operator,Number(number1),Number(number2))
-    operatorSelected=1
+    let answer = operate(operator,Number(number1),Number(number2))
+    let answerString = answer.toString()
+    if(answerString.length>=11){
+        displayNumbers_div.textContent = Number(answerString.substr(0,12))
+        alert(`CALCULATOR NOT BIG ENOUGH TO TELL YOU YOUR ANSWER WAS ${answer}`)
+    }else{
+        displayNumbers_div.textContent=answer
+
+    }
+    
     }
 }
 
