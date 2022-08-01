@@ -9,7 +9,11 @@ function divide(a,b){
     if(b==0){
         return 'MATH ERROR'
     }else{
-        return a/b
+        let x = (a/b)
+        let z = x.toString()
+        if(z.length>=11){
+            return Number(z.substring(0,10))
+        }else return x
     }
 }
 
@@ -76,6 +80,15 @@ let number1
 let number2
 let operator = 0
 let operatorSelected
+let decimalSelected =0
+
+
+// Function to Remove the selected class on operator
+function removeOperatorClass(){
+    for(let i = 0; i<operators_nodelist.length; i++){
+    operators_nodelist[i].classList.remove('selected')
+}
+}
 
 //Event Listeners to The Buttons
 
@@ -86,7 +99,7 @@ for(let i=0; i<number_buttons.length; i++){
         removeOperatorClass()
         operatorSelected=0
         }else if(displayNumbers_div.textContent.length==12){
-            alert('Calculator can\'t fit more')
+            displayNumbers_div.textContent = displayNumbers_div.textContent 
         }else{
             displayNumbers_div.textContent += number_buttons_nodes[i].textContent
             removeOperatorClass()
@@ -101,6 +114,9 @@ clear_button.addEventListener('click', function(){
     number1=0
     number2=0
     removeOperatorClass()
+    operator=0
+    operatorSelected=0
+    decimalSelected=0
 
 })
 
@@ -126,12 +142,14 @@ delete_button.addEventListener('click', function(){
 
  for(let i = 0; i<operators_nodelist.length; i++){
     operators_nodelist[i].addEventListener('click', function(){
+        equate()
         removeOperatorClass()
         operator = operators_nodelist[i].textContent;
         operators_nodelist[i].classList.toggle('selected')
         operatorSelected = 1
+        decimalSelected = 0
         number1 = displayNumbers_div.textContent;
-
+        
 
 
     })
@@ -139,17 +157,24 @@ delete_button.addEventListener('click', function(){
 
 }
 
-// Function to Remove the selected class on operator
-function removeOperatorClass(){
-    for(let i = 0; i<operators_nodelist.length; i++){
-    operators_nodelist[i].classList.remove('selected')
-}
-}
+
+
+// Decimal Button
+decimal_button.addEventListener('click', function(){
+
+    if(decimalSelected==0){
+        displayNumbers_div.textContent += '.'
+        decimalSelected = 1
+    }
+    else{
+        displayNumbers_div.textContent = displayNumbers_div.textContent
+    }
+})
+
 
 
 //equalButton
-console.log(operator)
-equal_button.addEventListener('click', function(){
+function equate(){
     number2 = displayNumbers_div.textContent 
     if(operator==0){
         displayNumbers_div.textContent = displayNumbers_div.textContent
@@ -157,4 +182,7 @@ equal_button.addEventListener('click', function(){
     displayNumbers_div.textContent = operate(operator,Number(number1),Number(number2))
     operatorSelected=1
     }
-})
+}
+
+
+equal_button.addEventListener('click', equate)
